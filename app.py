@@ -7,7 +7,7 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import uuid
 import jwt
-from PIL import Imagep
+from PIL import Image
 import git
 import json
 import zipfile
