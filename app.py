@@ -7,7 +7,7 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import uuid
 import jwt
-from PIL import Image
+from PIL import Imagep
 import git
 import json
 import zipfile
@@ -409,14 +409,14 @@ def download_files(current_user):
                             retrieve_file_paths(path, file, zip_file, file, jsonWAI(mywai))
                             zip_file.close()
 
-                            with open(os.path.abspath(os.path.join(os.sep, pathStore, file.public_id, 'Store.zip'),'rb')) as z:
+                            with open(os.path.abspath(os.path.join(os.sep, pathStore, file.public_id, 'Store.zip')),'rb') as z:
                                 encode_string = base64.encodebytes(z.read())
                                 res = Response(encode_string, headers={'name': 'Files', 'typ': 'application/zip'})
                                 return res
 
                         else:
                             try:
-                                with open(os.path.abspath(os.path.join(os.sep, pathStore, file.public_id + file.wai, file.name),'rb')) as f:
+                                with open(os.path.abspath(os.path.join(os.sep, pathStore, file.public_id + file.wai, file.name)),'rb') as f:
                                     encode_string = base64.encodebytes(f.read())
                                     res = Response(encode_string, headers={'name': file.name, 'typ': file.fileExtension})
                                     return res
@@ -424,7 +424,7 @@ def download_files(current_user):
                                 pass
                             try:
                                 fn = (file.name).replace('_', ' ')
-                                with open(os.path.abspath(os.path.join(os.sep, pathStore, file.public_id + file.wai, fn), 'rb')) as f:
+                                with open(os.path.abspath(os.path.join(os.sep, pathStore, file.public_id + file.wai, fn)), 'rb') as f:
                                     encode_string = base64.encodebytes(f.read())
                                     res = Response(encode_string,
                                                    headers={'name': file.name, 'typ': file.fileExtension})
@@ -459,7 +459,7 @@ def download_files(current_user):
 
                 zip_file.close()
 
-                with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id, 'Store.zip'), 'rb')) as z:
+                with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id, 'Store.zip')), 'rb') as z:
                     encode_string = base64.encodebytes(z.read())
                     res = Response(encode_string, headers={'name': 'Files', 'typ': 'application/zip'})
                     return res
@@ -479,7 +479,7 @@ def download_files(current_user):
                     retrieve_file_paths(path, fil, zip_file, fil, fil.wai)
                     zip_file.close()
 
-                    with open(os.path.abspath(os.path.join(os.sep, pathStore, fil.public_id, 'Store.zip'), 'rb')) as z:
+                    with open(os.path.abspath(os.path.join(os.sep, pathStore, fil.public_id, 'Store.zip')), 'rb') as z:
                         encode_string = base64.encodebytes(z.read())
                         res = Response(encode_string, headers={'name': 'Files', 'typ': 'application/zip'})
                         return res
@@ -501,12 +501,12 @@ def download_files(current_user):
                     retrieve_file_paths(path, fil, zip_file, fil, fil.wai)
                     zip_file.close()
 
-                    with open(os.path.abspath(os.path.join(os.sep, pathStore, fil.public_id, 'Store.zip'), 'rb')) as z:
+                    with open(os.path.abspath(os.path.join(os.sep, pathStore, fil.public_id, 'Store.zip')), 'rb') as z:
                         encode_string = base64.encodebytes(z.read())
                         res = Response(encode_string, headers={'name': 'Files', 'typ': 'application/zip'})
                         return res
 
-                with open(os.path.abspath(os.path.join(os.sep, pathStore, fil.public_id + fil.wai, fil.name), 'rb')) as f:
+                with open(os.path.abspath(os.path.join(os.sep, pathStore, fil.public_id + fil.wai, fil.name)), 'rb') as f:
                     encode_string = base64.encodebytes(f.read())
                     res = Response(encode_string, headers={'name': fil.name, 'typ': fil.fileExtension})
                     return res
@@ -535,7 +535,7 @@ def download_files(current_user):
 
                 zip_file.close()
 
-                with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id, 'Store.zip'), 'rb')) as z:
+                with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id, 'Store.zip')), 'rb') as z:
                     encode_string = base64.encodebytes(z.read())
                     res = Response(encode_string, headers={'name': 'Files', 'typ': 'application/zip'})
 
@@ -561,7 +561,7 @@ def download_files(current_user):
 
                 zip_file.close()
 
-                with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id, 'Store.zip'), 'rb')) as z:
+                with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id, 'Store.zip')), 'rb') as z:
                     encode_string = base64.encodebytes(z.read())
                     res = Response(encode_string, headers={'name': 'Files', 'typ': 'application/zip'})
 
@@ -575,7 +575,7 @@ def download_files(current_user):
             uid.append(fil.uid)
             for file in files:
                 if file.uid == uid[0]:
-                        with open(os.path.abspath(os.path.join(os.sep, pathStore, file.public_id + file.wai, file.name), 'rb')) as f:
+                        with open(os.path.abspath(os.path.join(os.sep, pathStore, file.public_id + file.wai, file.name)), 'rb') as f:
                             encode_string = base64.encodebytes(f.read())
                             res = Response(encode_string, headers={'name': file.name, 'typ': file.fileExtension})
                             return res
@@ -599,7 +599,7 @@ def download_files(current_user):
 
             zip_file.close()
 
-            with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id, 'Store.zip'), 'rb')) as z:
+            with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id, 'Store.zip')), 'rb') as z:
                 encode_string = base64.encodebytes(z.read())
                 res = Response(encode_string, headers={'name': 'Files', 'typ': 'application/zip'})
         return res
@@ -833,7 +833,7 @@ def get_last_files(current_user):
 def get_file_show(current_user):
     fuid = request.form['uid']
     files = Files.query.filter_by(uid=fuid).first()
-    with open(os.path.abspath(os.path.join(os.sep, pathStore, files.public_id + files.wai, files.name), 'rb')) as bites:
+    with open(os.path.abspath(os.path.join(os.sep, pathStore, files.public_id + files.wai, files.name)), 'rb') as bites:
         encode_string = base64.encodebytes(bites.read())
         my_j = encode_string.decode('utf-8')
         return my_j
@@ -998,7 +998,7 @@ def get_version_and_show(current_user):
         repo = git.Repo(path)
         repo.git.checkout(commit_id)
 
-        with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id+jsonWAI(mywai), file.name), 'rb')) as bites:
+        with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id+jsonWAI(mywai), file.name)), 'rb') as bites:
             encode_string = base64.encodebytes(bites.read())
             repo.git.checkout(file.commit_id)
             return encode_string
@@ -1007,7 +1007,7 @@ def get_version_and_show(current_user):
     try:
         file = Files.query.filter_by(public_id=current_user.public_id).filter_by(uid=auid).first()
 
-        with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id+jsonWAI(mywai), file.name), 'rb')) as bites:
+        with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id+jsonWAI(mywai), file.name)), 'rb') as bites:
             encode_string = base64.encodebytes(bites.read())
             return encode_string
     except:
@@ -1044,7 +1044,7 @@ def download_version(current_user):
         repo = git.Repo(path)
         repo.git.checkout(ver.commit_id)
 
-        with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id + jsonWAI(mywai), file.name), 'rb')) as f:
+        with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id + jsonWAI(mywai), file.name)), 'rb') as f:
             encode_string = base64.encodebytes(f.read())
             res = Response(encode_string, headers={'name': file.name, 'typ': file.fileExtension})
             repo.git.checkout(file.commit_id)
@@ -1091,7 +1091,7 @@ def get_users(current_user):
                 my_j = 'data:image/png;base64,' + my_j
                 file_data['select'] = my_j
             else:
-                with open(os.path.abspath(os.path.join(os.sep, 'avatardefault'), 'rb')) as z:
+                with open(os.path.abspath(os.path.join(os.sep, 'avatardefault')), 'rb') as z:
                     encode_string = base64.encodebytes(z.read())
                     my_j = encode_string.decode('utf-8')
                     my_j = 'data:image/png;base64,' + my_j
@@ -1243,7 +1243,7 @@ def get_file_to_show(current_user):
     fn = (fileInfo.name).replace('_', ' ')
 
     try:
-        with open(os.path.abspath(os.path.join(os.sep, pathStore, fileInfo.public_id+jsonWAI(mywai), fileInfo.name), 'rb')) as bites:
+        with open(os.path.abspath(os.path.join(os.sep, pathStore, fileInfo.public_id+jsonWAI(mywai), fileInfo.name)), 'rb') as bites:
             encode_string = base64.encodebytes(bites.read())
             my_j = encode_string.decode('utf-8')
             return my_j
@@ -1251,7 +1251,7 @@ def get_file_to_show(current_user):
         pass
 
     try:
-        with open(os.path.abspath(os.path.join(os.sep, pathStore, fileInfo.public_id+jsonWAI(mywai), fn), 'rb')) as bites:
+        with open(os.path.abspath(os.path.join(os.sep, pathStore, fileInfo.public_id+jsonWAI(mywai), fn)), 'rb') as bites:
             encode_string = base64.encodebytes(bites.read())
             my_j = encode_string.decode('utf-8')
             return my_j
@@ -1284,7 +1284,7 @@ def get_shared_show(current_user):
         waiJson = json.dumps(waiList)
         return jsonify({'wai': waiJson})
 
-    with open(os.path.abspath(os.path.join(os.sep, pathStore, fileInfo.public_id+fileInfo.wai, fileInfo.name), 'rb')) as bites:
+    with open(os.path.abspath(os.path.join(os.sep, pathStore, fileInfo.public_id+fileInfo.wai, fileInfo.name)), 'rb') as bites:
         encode_string = base64.encodebytes(bites.read())
         my_j = encode_string.decode('utf-8')
         return my_j
@@ -1458,7 +1458,7 @@ def get_images(current_user):
         im3 = im2.convert('RGB')
         im3.save(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id, 'imagesresize', name)))
 
-        with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id, 'imagesresize', name), 'rb')) as bites:
+        with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id, 'imagesresize', name)), 'rb') as bites:
             encode_string = base64.encodebytes(bites.read())
             my_j = encode_string.decode('utf-8')
             my_j = 'data:image/jpg;base64,' + my_j
@@ -1494,7 +1494,7 @@ def add_avatar(current_user):
         im3 = im2.convert('RGB')
         im3.save(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id, 'avatar', 'ravatar.jpg')))
 
-        with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id, 'avatar', 'ravatar.jpg'), 'rb')) as z:
+        with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id, 'avatar', 'ravatar.jpg')), 'rb') as z:
             encode_string = base64.encodebytes(z.read())
             u = User.query.filter_by(public_id=current_user.public_id).first()
             u.avatar = encode_string
@@ -1517,7 +1517,7 @@ def get_avatar(current_user):
         my_j = 'data:image/jpg;base64,' + my_j
         return jsonify({'avatar': my_j})
     else:
-        with open(os.path.abspath(os.path.join(os.sep, 'avatardefault'), 'rb')) as z:
+        with open(os.path.abspath(os.path.join(os.sep, 'avatardefault')), 'rb') as z:
             encode_string = base64.encodebytes(z.read())
             my_j = encode_string.decode('utf-8')
             my_j = 'data:image/png;base64,' + my_j
@@ -1569,8 +1569,8 @@ def login():
                             'exp': datetime.datetime.now(pytz.timezone('Europe/Warsaw')) + datetime.timedelta(minutes=30)},
                            app.config['SECRET_KEY'])
 
-        path = os.path.abspath(os.path.join(os.sep, pathStore, user.public_id))
         try:
+            path = os.path.abspath(os.path.join(os.sep, pathStore, user.public_id))
             repo = git.Repo(path)
         except:
             git.Repo.init(path)
