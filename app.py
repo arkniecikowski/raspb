@@ -1091,7 +1091,7 @@ def get_users(current_user):
                 my_j = 'data:image/png;base64,' + my_j
                 file_data['select'] = my_j
             else:
-                with open(os.path.abspath(os.path.join(os.sep, 'avatardefault')), 'rb') as z:
+                with open(os.path.join('avatardefault'), 'rb') as z:
                     encode_string = base64.encodebytes(z.read())
                     my_j = encode_string.decode('utf-8')
                     my_j = 'data:image/png;base64,' + my_j
@@ -1517,7 +1517,7 @@ def get_avatar(current_user):
         my_j = 'data:image/jpg;base64,' + my_j
         return jsonify({'avatar': my_j})
     else:
-        with open(os.path.join('avatardefault')), 'rb') as z:
+        with open(os.path.join('avatardefault'), 'rb') as z:
             encode_string = base64.encodebytes(z.read())
             my_j = encode_string.decode('utf-8')
             my_j = 'data:image/png;base64,' + my_j
