@@ -484,7 +484,7 @@ def download_files(current_user):
                         res = Response(encode_string, headers={'name': 'Files', 'typ': 'application/zip'})
                         return res
 
-                with open(os.path.abspath(os.path.join(os.sep, pathStore, fil.public_id + fil.wai, fil.name), 'rb')) as f:
+                with open(os.path.abspath(os.path.join(os.sep, pathStore, fil.public_id + fil.wai, fil.name)), 'rb') as f:
                     encode_string = base64.encodebytes(f.read())
                     res = Response(encode_string, headers={'name': fil.name, 'typ': fil.fileExtension})
                     return res
@@ -1055,7 +1055,7 @@ def download_version(current_user):
     try:
         file = Files.query.filter_by(public_id=current_user.public_id).filter_by(uid=uid).first()
 
-        with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id + jsonWAI(mywai), file.name), 'rb')) as f:
+        with open(os.path.abspath(os.path.join(os.sep, pathStore, current_user.public_id + jsonWAI(mywai), file.name)), 'rb') as f:
             encode_string = base64.encodebytes(f.read())
             res = Response(encode_string, headers={'name': file.name, 'typ': file.fileExtension})
             return res
