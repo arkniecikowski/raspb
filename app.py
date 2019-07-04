@@ -21,7 +21,7 @@ import base64
 from werkzeug.security import check_password_hash, generate_password_hash
 from functools import wraps
 
-pathStore = 'media/arkadiusz/183B-F811/magazyn'
+pathStore = 'media/pi/183B-F811/magazyn'
 os.makedirs(os.path.abspath(os.path.join(os.sep, pathStore)), exist_ok=True)
 
 app = Flask(__name__)
